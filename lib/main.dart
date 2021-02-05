@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:MonumentCompass/Registrazione.dart' as reg;
 import 'package:MonumentCompass/menuPrincipale.dart' as menu;
+import 'package:google_fonts/google_fonts.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -22,12 +24,15 @@ class MonumentCompass extends StatelessWidget {
           body: Padding(
         padding:
             const EdgeInsets.only(top: 80, right: 25, bottom: 16, left: 25),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: ListView(
+          
           children: [
             Text(
+              
               "MONUMENT COMPASS",
+              style: GoogleFonts.grandHotel(color: Colors.black, fontSize: 20),
               textScaleFactor: 1.5,
+              textAlign: TextAlign.center,
             ),
             Icon(Icons.art_track, size: 100),
             Form(
@@ -36,7 +41,7 @@ class MonumentCompass extends StatelessWidget {
                 children: [
                   TextFormField(
                       decoration:
-                          InputDecoration(labelText: 'Email o Nome utente'),
+                          InputDecoration(labelText: 'Email o Nome utente' ),
                       validator: (input) =>
                           input.contains('@') ? 'Email non valida' : null),
                   TextFormField(
@@ -53,12 +58,15 @@ class MonumentCompass extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 height: 50,
-                child:
-                    ElevatedButton(child: Text("ENTRA"), onPressed: () => {Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => menu.MenuPrincipale()),
-                        )}),
+                child: ElevatedButton(
+                    child: Text("ENTRA"),
+                    onPressed: () => {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => menu.MenuPrincipale()),
+                          )
+                        }),
               ),
             ),
             Padding(

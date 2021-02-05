@@ -8,8 +8,19 @@ class DoveAndare extends StatefulWidget {
 }
 
 class _DoveAndareState extends State<DoveAndare> {
-
+  FocusNode _focus = new FocusNode();
+  
   TextEditingController _luogo = TextEditingController();
+  
+  @override
+  void initState() {
+    super.initState();
+    _focus.addListener(provaListener);
+  }
+
+  void provaListener(){
+    print(_focus.hasFocus.toString());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +46,10 @@ class _DoveAndareState extends State<DoveAndare> {
         ),
         body: Padding(
           padding: const EdgeInsets.all(24.0),
-          child: ListView(
+          child: ListView( 
             children: [
               TextField(
+                focusNode: _focus,
                 controller: _luogo,
                 style: TextStyle(fontSize: 20),
                 decoration: InputDecoration(
@@ -45,7 +57,10 @@ class _DoveAndareState extends State<DoveAndare> {
                     border: UnderlineInputBorder(borderSide: BorderSide(width: 3)),
                     hintText: 'Digita un luogo...'),
               ),
-              ElevatedButton(onPressed: () => print(_luogo.text), child: Text("stampa luogo sulla console"))
+
+              ElevatedButton(onPressed: () => print(_luogo), child: Text("stampa luogo sulla console"))
+
+              //DA QUI INIZIANO I LUOGHI DINAMICI
             ],
           ),
         ),

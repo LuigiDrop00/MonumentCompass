@@ -6,8 +6,8 @@ class CronologiaRicerche extends StatefulWidget {
 }
 
 class _CronologiaRicercheState extends State<CronologiaRicerche> {
-  List<String> _ricerche = [];
-  List<String> getRicerche() => _ricerche;
+  List _ricerche = [];
+  List getRicerche() => _ricerche;
 
   void addRicerche(String value) {
     _ricerche.add(value);
@@ -17,6 +17,6 @@ class _CronologiaRicercheState extends State<CronologiaRicerche> {
   @override
   Widget build(BuildContext context) {
 
-    return ListView(children: [],);
+    return ListView(children: _ricerche,);
   }
 }

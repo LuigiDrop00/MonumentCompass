@@ -18,34 +18,35 @@ class Registrazione extends StatelessWidget {
               ),
               body: Padding(
                 padding: const EdgeInsets.all(16),
-                child: Column(
+                child: ListView(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 24),
+                      padding: const EdgeInsets.symmetric(vertical: 10),
                       child: TextFormField(
-                          decoration: InputDecoration(labelText: 'Nome utente'),
+                          decoration: InputDecoration(labelText: 'Nome utente', labelStyle: TextStyle(fontSize: 20)),
                           validator: (input) =>
                               input.contains('@') ? 'Email ' : null),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: TextFormField(
-                          decoration: InputDecoration(labelText: 'Email'),
+                          decoration: InputDecoration(labelText: 'Email', labelStyle: TextStyle(fontSize: 20)),
                           validator: (input) =>
                               input.contains('@') ? 'Email non valida' : null),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: TextFormField(
-                          decoration: InputDecoration(labelText: 'Password'),
+                          decoration: InputDecoration(labelText: 'Password', labelStyle: TextStyle(fontSize: 20)),
                           validator: (input) =>
                               input.contains('@') ? 'Email non valida' : null),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      padding: const EdgeInsets.symmetric(vertical: 0),
                       child: TextFormField(
+                      
                           decoration:
-                              InputDecoration(labelText: 'Conferma Passowrd'),
+                              InputDecoration(labelText: 'Conferma Passowrd', labelStyle: TextStyle(fontSize: 20),text ),
                           validator: (input) =>
                               input.contains('@') ? 'Email non valida' : null),
                     ),
