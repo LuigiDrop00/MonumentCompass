@@ -25,10 +25,8 @@ class MonumentCompass extends StatelessWidget {
         padding:
             const EdgeInsets.only(top: 80, right: 25, bottom: 16, left: 25),
         child: ListView(
-          
           children: [
             Text(
-              
               "MONUMENT COMPASS",
               style: GoogleFonts.grandHotel(color: Colors.black, fontSize: 20),
               textScaleFactor: 1.5,
@@ -41,7 +39,7 @@ class MonumentCompass extends StatelessWidget {
                 children: [
                   TextFormField(
                       decoration:
-                          InputDecoration(labelText: 'Email o Nome utente' ),
+                          InputDecoration(labelText: 'Email o Nome utente'),
                       validator: (input) =>
                           input.contains('@') ? 'Email non valida' : null),
                   TextFormField(
@@ -73,7 +71,7 @@ class MonumentCompass extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 24),
               child: Row(children: <Widget>[
                 Expanded(child: Divider(thickness: 2)),
-                Text("  NON SEI REGISTRATO?  "),
+                Text("  NON SEI REGISTRATO?"),
                 Expanded(
                     child: Divider(
                   thickness: 2,

@@ -2,8 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:fluttericon/typicons_icons.dart' as icon;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:MonumentCompass/doveVuoiAndare.dart' as doveAndare;
+import 'package:MonumentCompass/preferiti.dart' as preferiti;
+import 'package:MonumentCompass/account.dart' as account;
+class MenuPrincipale extends StatefulWidget {
+  @override
+  _MenuPrincipaleState createState() => _MenuPrincipaleState();
+}
 
-class MenuPrincipale extends StatelessWidget {
+class _MenuPrincipaleState extends State<MenuPrincipale> {
+  int indiceBarra = 0;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -50,7 +58,10 @@ class MenuPrincipale extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                   side: BorderSide(width: 6, color: Colors.grey[800])),
-              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => doveAndare.DoveAndare())),
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => doveAndare.DoveAndare())),
               child: Text(
                 'Dove vuoi andare?',
                 style: TextStyle(color: Colors.white, fontSize: 24),
@@ -88,44 +99,40 @@ class MenuPrincipale extends StatelessWidget {
               ),
               onPressed: () {})),
       bottomNavigationBar: BottomNavigationBar(
-        iconSize: 4,
+        fixedColor: Colors.black,
+        currentIndex: indiceBarra,
+        iconSize: 50,
         unselectedLabelStyle: TextStyle(
             color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
         selectedLabelStyle: TextStyle(
-            color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+            color: Colors.green, fontWeight: FontWeight.bold, fontSize: 20),
+            onTap: (value) {
+              indiceBarra = value;
+              if (value == 1) Navigator.push(context, MaterialPageRoute(builder: (context) => preferiti.Preferiti()));
+              // if (value == 0) Navigator.push(context, MaterialPageRoute(builder: (context) => preferiti.Preferiti()));
+              if (value == 2) Navigator.push(context, MaterialPageRoute(builder: (context) => account.Account()));
+              setState(() {});
+            },
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             label: "Home",
-
-            icon: IconButton(
-              iconSize: 50,
-              padding: EdgeInsets.zero,
-              icon: Icon(
-                Icons.home,
-              ),
-              onPressed: () => {},
+            icon: Icon(
+              Icons.home,
             ),
           ),
           BottomNavigationBarItem(
             label: "Preferiti",
-            icon: IconButton(
-              padding: EdgeInsets.zero,
-              iconSize: 50,
-              icon: Icon(
-                Icons.favorite_border,
-              ),
-              onPressed: () => {},
+            icon: Icon(
+              Icons.favorite_border_outlined,
             ),
           ),
           BottomNavigationBarItem(
             label: "Account",
-            icon: IconButton(
-              iconSize: 50,
-              padding: EdgeInsets.zero,
-              icon: Icon(Icons.account_circle_outlined),
-              onPressed: () => {},
+            icon: Icon(
+              Icons.account_circle_outlined,
             ),
-          )
+          ),
+          
         ],
       ),
     )));

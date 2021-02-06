@@ -44,9 +44,8 @@ class Registrazione extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 0),
                       child: TextFormField(
-                      
                           decoration:
-                              InputDecoration(labelText: 'Conferma Passowrd', labelStyle: TextStyle(fontSize: 20),text ),
+                              InputDecoration(labelText: 'Conferma Passowrd', labelStyle: TextStyle(fontSize: 20) ),
                           validator: (input) =>
                               input.contains('@') ? 'Email non valida' : null),
                     ),
