@@ -21,7 +21,7 @@ class MonumentCompass extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          body: Padding(
+          body: Padding( 
         padding:
             const EdgeInsets.only(top: 80, right: 25, bottom: 16, left: 25),
         child: ListView(

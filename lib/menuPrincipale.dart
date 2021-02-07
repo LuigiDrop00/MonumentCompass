@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:MonumentCompass/doveVuoiAndare.dart' as doveAndare;
 import 'package:MonumentCompass/preferiti.dart' as preferiti;
 import 'package:MonumentCompass/account.dart' as account;
+import 'package:MonumentCompass/scopriNelleVicinanze.dart' as  vicinanze;
+import 'package:MonumentCompass/src/bottomNavigationBar.dart' as bottomBar;
 class MenuPrincipale extends StatefulWidget {
   @override
   _MenuPrincipaleState createState() => _MenuPrincipaleState();
@@ -17,6 +19,7 @@ class _MenuPrincipaleState extends State<MenuPrincipale> {
     return MaterialApp(
         home: SafeArea(
             child: Scaffold(
+             
       appBar: AppBar(
         title: Container(
             child: Text("Monument Compass",
@@ -28,6 +31,7 @@ class _MenuPrincipaleState extends State<MenuPrincipale> {
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
+              scale: 3,
                 image: AssetImage("assets/cultura.png"),
                 repeat: ImageRepeat.repeat,
                 colorFilter: ColorFilter.mode(
@@ -44,7 +48,7 @@ class _MenuPrincipaleState extends State<MenuPrincipale> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                     side: BorderSide(width: 6, color: Colors.grey[800])),
-                onPressed: () {},
+                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => vicinanze.ScopriNelleVicinanze())),
                 child: Text(
                   'Scopri nelle Vicinanze',
                   style: TextStyle(color: Colors.white, fontSize: 24),
@@ -98,43 +102,7 @@ class _MenuPrincipaleState extends State<MenuPrincipale> {
                 ],
               ),
               onPressed: () {})),
-      bottomNavigationBar: BottomNavigationBar(
-        fixedColor: Colors.black,
-        currentIndex: indiceBarra,
-        iconSize: 50,
-        unselectedLabelStyle: TextStyle(
-            color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
-        selectedLabelStyle: TextStyle(
-            color: Colors.green, fontWeight: FontWeight.bold, fontSize: 20),
-            onTap: (value) {
-              indiceBarra = value;
-              if (value == 1) Navigator.push(context, MaterialPageRoute(builder: (context) => preferiti.Preferiti()));
-              // if (value == 0) Navigator.push(context, MaterialPageRoute(builder: (context) => preferiti.Preferiti()));
-              if (value == 2) Navigator.push(context, MaterialPageRoute(builder: (context) => account.Account()));
-              setState(() {});
-            },
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            label: "Home",
-            icon: Icon(
-              Icons.home,
-            ),
-          ),
-          BottomNavigationBarItem(
-            label: "Preferiti",
-            icon: Icon(
-              Icons.favorite_border_outlined,
-            ),
-          ),
-          BottomNavigationBarItem(
-            label: "Account",
-            icon: Icon(
-              Icons.account_circle_outlined,
-            ),
-          ),
-          
-        ],
-      ),
+      bottomNavigationBar: bottomBar.MyBottomNavigationBar(context) ,
     )));
   }
 }

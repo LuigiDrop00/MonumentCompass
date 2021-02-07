@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart' as ico;
+import 'package:MonumentCompass/src/bottomNavigationBar.dart' as bottomBar;
 
 class DoveAndare extends StatefulWidget {
   @override
@@ -23,353 +24,124 @@ class _DoveAndareState extends State<DoveAndare> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 66,
-          backgroundColor: Colors.grey[400],
-          title: Text(
-            "Dove vuoi andare?",
-            style: TextStyle(fontSize: 28),
-          ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 16.0),
-              child: IconButton(
-                  iconSize: 30,
-                  icon: Icon(Icons.arrow_back),
-                  onPressed: () => Navigator.pop(context)),
-            )
-          ],
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: ListView(
-            children: [
-              TextField(
-                controller: luogo,
-                style: TextStyle(fontSize: 20),
-                decoration: InputDecoration(
-                    suffixIcon: Icon(ico.FontAwesome5.map_marked_alt),
-                    border:
-                        UnderlineInputBorder(borderSide: BorderSide(width: 3)),
-                    hintText: 'Digita un luogo...'),
-              ),
-
-              ElevatedButton(
-                  onPressed: () => print(luogo.text),
-                  child: Text("stampa luogo sulla console")),
-
-              //DA QUI INIZIANO I LUOGHI DINAMICI
-
-              ListView(
-                physics: ClampingScrollPhysics(),
-                shrinkWrap: true,
-                children: [
-                  Card(
-                    child: Column(
-                      children: [
-                        Stack(
-                          children: [
-                            Image(
-                              image: AssetImage("assets/Ponza00.jpg"),
-                              height: 100,
-                              width: double.infinity,
-                              fit: BoxFit.fitWidth,
-                            ),
-                            IconButton(
-                              iconSize: 35,
-                              color: Colors.red,
-                              icon: Icon(Icons.favorite),
-                              onPressed: () => {},
-                            )
-                          ],
-                        ),
-                        Text("TITOLO", textAlign: TextAlign.right),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  Card(
-                    child: Column(
-                      children: [
-                        Stack(
-                          children: [
-                            Image(
-                              image: AssetImage("assets/Ponza00.jpg"),
-                              height: 100,
-                              width: double.infinity,
-                              fit: BoxFit.fitWidth,
-                            ),
-                            IconButton(
-                              iconSize: 35,
-                              color: Colors.red,
-                              icon: Icon(Icons.favorite),
-                              onPressed: () => {},
-                            )
-                          ],
-                        ),
-                        Text("TITOLO", textAlign: TextAlign.right),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  Card(
-                    child: Column(
-                      children: [
-                        Stack(
-                          children: [
-                            Image(
-                              image: AssetImage("assets/Ponza00.jpg"),
-                              height: 100,
-                              width: double.infinity,
-                              fit: BoxFit.fitWidth,
-                            ),
-                            IconButton(
-                              iconSize: 35,
-                              color: Colors.red,
-                              icon: Icon(Icons.favorite),
-                              onPressed: () => {},
-                            )
-                          ],
-                        ),
-                        Text("TITOLO", textAlign: TextAlign.right),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  Card(
-                    child: Column(
-                      children: [
-                        Stack(
-                          children: [
-                            Image(
-                              image: AssetImage("assets/Ponza00.jpg"),
-                              height: 100,
-                              width: double.infinity,
-                              fit: BoxFit.fitWidth,
-                            ),
-                            IconButton(
-                              iconSize: 35,
-                              color: Colors.red,
-                              icon: Icon(Icons.favorite),
-                              onPressed: () => {},
-                            )
-                          ],
-                        ),
-                        Text("TITOLO", textAlign: TextAlign.right),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  Card(
-                    child: Column(
-                      children: [
-                        Stack(
-                          children: [
-                            Image(
-                              image: AssetImage("assets/Ponza00.jpg"),
-                              height: 100,
-                              width: double.infinity,
-                              fit: BoxFit.fitWidth,
-                            ),
-                            IconButton(
-                              iconSize: 35,
-                              color: Colors.red,
-                              icon: Icon(Icons.favorite),
-                              onPressed: () => {},
-                            )
-                          ],
-                        ),
-                        Text("TITOLO", textAlign: TextAlign.right),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  Card(
-                    child: Column(
-                      children: [
-                        Stack(
-                          children: [
-                            Image(
-                              image: AssetImage("assets/Ponza00.jpg"),
-                              height: 100,
-                              width: double.infinity,
-                              fit: BoxFit.fitWidth,
-                            ),
-                            IconButton(
-                              iconSize: 35,
-                              color: Colors.red,
-                              icon: Icon(Icons.favorite),
-                              onPressed: () => {},
-                            )
-                          ],
-                        ),
-                        Text("TITOLO", textAlign: TextAlign.right),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  Card(
-                    child: Column(
-                      children: [
-                        Stack(
-                          children: [
-                            Image(
-                              image: AssetImage("assets/Ponza00.jpg"),
-                              height: 100,
-                              width: double.infinity,
-                              fit: BoxFit.fitWidth,
-                            ),
-                            IconButton(
-                              iconSize: 35,
-                              color: Colors.red,
-                              icon: Icon(Icons.favorite),
-                              onPressed: () => {},
-                            )
-                          ],
-                        ),
-                        Text("TITOLO", textAlign: TextAlign.right),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  Card(
-                    child: Column(
-                      children: [
-                        Stack(
-                          children: [
-                            Image(
-                              image: AssetImage("assets/Ponza00.jpg"),
-                              height: 100,
-                              width: double.infinity,
-                              fit: BoxFit.fitWidth,
-                            ),
-                            IconButton(
-                              iconSize: 35,
-                              color: Colors.red,
-                              icon: Icon(Icons.favorite),
-                              onPressed: () => {},
-                            )
-                          ],
-                        ),
-                        Text("TITOLO", textAlign: TextAlign.right),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  Card(
-                    child: Column(
-                      children: [
-                        Stack(
-                          children: [
-                            Image(
-                              image: AssetImage("assets/Ponza00.jpg"),
-                              height: 100,
-                              width: double.infinity,
-                              fit: BoxFit.fitWidth,
-                            ),
-                            IconButton(
-                              iconSize: 35,
-                              color: Colors.red,
-                              icon: Icon(Icons.favorite),
-                              onPressed: () => {},
-                            )
-                          ],
-                        ),
-                        Text("TITOLO", textAlign: TextAlign.right),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                            Icon(Icons.star_border),
-                          ],
-                        )
-                      ],
-                    ),
-                  )
-                ],
+      home: SafeArea(
+        child: Scaffold(
+          bottomNavigationBar: bottomBar.MyBottomNavigationBar(context),
+          appBar: AppBar(
+            toolbarHeight: 66,
+            backgroundColor: Colors.grey[400],
+            title: Text(
+              "Dove vuoi andare?",
+              style: TextStyle(fontSize: 28),
+            ),
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: 16.0),
+                child: IconButton(
+                    iconSize: 30,
+                    icon: Icon(Icons.arrow_back),
+                    onPressed: () => Navigator.pop(context)),
               )
             ],
           ),
+          body: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: ListView(
+              children: [
+                TextField(
+                  controller: luogo,
+                  style: TextStyle(fontSize: 20),
+                  decoration: InputDecoration(
+                      suffixIcon: Icon(ico.FontAwesome5.map_marked_alt),
+                      border: UnderlineInputBorder(
+                          borderSide: BorderSide(width: 3)),
+                      hintText: 'Digita un luogo...'),
+                ),
+
+                ElevatedButton(
+                    onPressed: () => print(luogo.text),
+                    child: Text("stampa luogo sulla console")),
+
+                //DA QUI INIZIANO I LUOGHI DINAMICI
+
+                ListView(
+                  physics: ClampingScrollPhysics(),
+                  shrinkWrap: true,
+                  children: [
+                    Card(
+                      child: Column(
+                        children: [
+                          Stack(
+                            children: [
+                              Image(
+                                image: AssetImage("assets/Ponza00.jpg"),
+                                height: 100,
+                                width: double.infinity,
+                                fit: BoxFit.fitWidth,
+                              ),
+                              IconButton(
+                                iconSize: 35,
+                                color: Colors.red,
+                                icon: Icon(Icons.favorite),
+                                onPressed: () => {},
+                              )
+                            ],
+                          ),
+                          Text("TITOLO", textAlign: TextAlign.right),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.star_border),
+                              Icon(Icons.star_border),
+                              Icon(Icons.star_border),
+                              Icon(Icons.star_border),
+                              Icon(Icons.star_border),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                    Card(
+                      child: Column(
+                        children: [
+                          Stack(
+                            children: [
+                              Image(
+                                image: AssetImage("assets/Ponza00.jpg"),
+                                height: 100,
+                                width: double.infinity,
+                                fit: BoxFit.fitWidth,
+                              ),
+                              IconButton(
+                                iconSize: 35,
+                                color: Colors.red,
+                                icon: Icon(Icons.favorite),
+                                onPressed: () => {},
+                              )
+                            ],
+                          ),
+                          Text("TITOLO", textAlign: TextAlign.right),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.star_border),
+                              Icon(Icons.star_border),
+                              Icon(Icons.star_border),
+                              Icon(Icons.star_border),
+                              Icon(Icons.star_border),
+                            ],
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
         ),
       ),
-    ));
+    );
   }
 }
 
