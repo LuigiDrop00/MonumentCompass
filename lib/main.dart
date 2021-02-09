@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:MonumentCompass/Registrazione.dart' as reg;
 import 'package:MonumentCompass/menuPrincipale.dart' as menu;
 import 'package:google_fonts/google_fonts.dart';
+import 'visualizzaDettaglioCitta.dart' as visua;
 
 void main() {
   runApp(MyApp());
@@ -21,7 +22,7 @@ class MonumentCompass extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          body: Padding( 
+          body: Padding(
         padding:
             const EdgeInsets.only(top: 80, right: 25, bottom: 16, left: 25),
         child: ListView(
@@ -29,7 +30,7 @@ class MonumentCompass extends StatelessWidget {
             Text(
               "MONUMENT COMPASS",
               style: GoogleFonts.grandHotel(color: Colors.black, fontSize: 20),
-              textScaleFactor: 1.5,
+              textScaleFactor: 1.8,
               textAlign: TextAlign.center,
             ),
             Icon(Icons.art_track, size: 100),
@@ -90,6 +91,15 @@ class MonumentCompass extends StatelessWidget {
                               builder: (context) => reg.Registrazione()),
                         )
                       }),
+            ),
+            ElevatedButton(
+              child: Text("prova pag dettaglio"),
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => visua.DettaglioCitta(
+                            immagine: AssetImage("assets/Ponza00.jpg"), title: "Ponza",
+                          ))),
             )
           ],
         ),

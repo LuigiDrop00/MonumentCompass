@@ -1,23 +1,23 @@
+import 'package:MonumentCompass/bottomNavigationPages/preferiti.dart';
 import 'package:flutter/material.dart';
-import 'package:MonumentCompass/preferiti.dart' as preferiti;
-import 'package:MonumentCompass/account.dart' as account;
+import 'package:MonumentCompass/bottomNavigationPages/account.dart ' as account;
+import 'package:MonumentCompass/bottomNavigationPages/preferiti.dart ' as preferiti;
 import 'package:MonumentCompass/menuPrincipale.dart' as menu;
-class MyBottomNavigationBar extends StatefulWidget {
-  MyBottomNavigationBar(this.contesto);
-  final BuildContext contesto;
+
+class Account extends StatefulWidget {
   @override
-  _MyBottomNavigationBarState createState() => _MyBottomNavigationBarState(contesto);
+  _AccountState createState() => _AccountState();
+  static const int indexBar = 2;
 }
 
-class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
+class _AccountState extends State<Account> {
+  int indiceBarra = Account.indexBar;
 
-  int indiceBarra = 0;
-  _MyBottomNavigationBarState(this.contesto);
-  BuildContext contesto;
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-        fixedColor: Colors.black,
+    return MaterialApp(
+        home: Scaffold(
+          bottomNavigationBar: BottomNavigationBar(
         currentIndex: indiceBarra,
         iconSize: 50,
         unselectedLabelStyle: TextStyle(
@@ -26,10 +26,8 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
             color: Colors.green, fontWeight: FontWeight.bold, fontSize: 20),
             onTap: (value) {
               indiceBarra = value;
-              
-              if (value == 0) Navigator.push(contesto, MaterialPageRoute(builder: (context) => menu.MenuPrincipale()));
-              if (value == 1) Navigator.push(contesto, MaterialPageRoute(builder: (context) => preferiti.Preferiti()));
-              if (value == 2) Navigator.push(contesto, MaterialPageRoute(builder: (context) => account.Account()));
+              if (value == 0) Navigator.push(context, MaterialPageRoute(builder: (context) => menu.MenuPrincipale()));
+              if (value == 1) Navigator.push(context, MaterialPageRoute(builder: (context) => preferiti.Preferiti()));
               setState(() {});
              
             },
@@ -54,6 +52,10 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
           ),
           
         ],
-      );
+      ) ,
+            appBar: AppBar(
+      title: Text("Account"),
+      centerTitle: true,
+    )));
   }
 }

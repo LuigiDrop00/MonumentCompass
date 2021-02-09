@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:fluttericon/typicons_icons.dart' as icon;
 import 'package:google_fonts/google_fonts.dart';
-import 'package:MonumentCompass/doveVuoiAndare.dart' as doveAndare;
-import 'package:MonumentCompass/preferiti.dart' as preferiti;
-import 'package:MonumentCompass/account.dart' as account;
-import 'package:MonumentCompass/scopriNelleVicinanze.dart' as  vicinanze;
-import 'package:MonumentCompass/src/bottomNavigationBar.dart' as bottomBar;
+import 'package:MonumentCompass/menuPrincipalePages/doveVuoiAndare.dart' as doveAndare;
+import 'package:MonumentCompass/menuPrincipalePages/scopriNelleVicinanze.dart' as  vicinanze;
+import 'package:MonumentCompass/bottomNavigationPages/account.dart ' as account;
+import 'package:MonumentCompass/bottomNavigationPages/preferiti.dart ' as preferiti;
+import 'package:MonumentCompass/menuPrincipale.dart' as menu;
+
+
 class MenuPrincipale extends StatefulWidget {
+  
+
   @override
   _MenuPrincipaleState createState() => _MenuPrincipaleState();
 }
 
 class _MenuPrincipaleState extends State<MenuPrincipale> {
+  
   int indiceBarra = 0;
 
   @override
   Widget build(BuildContext context) {
+    
     return MaterialApp(
         home: SafeArea(
             child: Scaffold(
@@ -102,7 +108,44 @@ class _MenuPrincipaleState extends State<MenuPrincipale> {
                 ],
               ),
               onPressed: () {})),
-      bottomNavigationBar: bottomBar.MyBottomNavigationBar(context) ,
+      bottomNavigationBar: BottomNavigationBar(
+        fixedColor: Colors.lightBlue,
+        currentIndex: indiceBarra,
+        iconSize: 50,
+        unselectedLabelStyle: TextStyle(
+            color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+        selectedLabelStyle: TextStyle(
+            color: Colors.green, fontWeight: FontWeight.bold, fontSize: 20),
+            onTap: (value) {
+              
+              if (value == 0) Navigator.push(context, MaterialPageRoute(builder: (context) => menu.MenuPrincipale()));
+              if (value == 1) Navigator.push(context, MaterialPageRoute(builder: (context) => preferiti.Preferiti()));
+              if (value == 2) Navigator.push(context, MaterialPageRoute(builder: (context) => account.Account()));
+              setState(() {});
+             
+            },
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            label: "Home",
+            icon: Icon(
+              Icons.home_outlined,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: "Preferiti",
+            icon: Icon(
+              Icons.favorite_border_outlined,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: "Account",
+            icon: Icon(
+              Icons.account_circle_outlined,
+            ),
+          ),
+          
+        ],
+      ) ,
     )));
   }
 }

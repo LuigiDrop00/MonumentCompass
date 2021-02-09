@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart' as ico;
-import 'package:MonumentCompass/src/bottomNavigationBar.dart' as bottomBar;
+import 'package:MonumentCompass/bottomNavigationPages/account.dart ' as account;
+import 'package:MonumentCompass/bottomNavigationPages/preferiti.dart ' as preferiti;
+import 'package:MonumentCompass/menuPrincipale.dart' as menu;
 
 class DoveAndare extends StatefulWidget {
   @override
@@ -10,7 +12,7 @@ class DoveAndare extends StatefulWidget {
 
 class _DoveAndareState extends State<DoveAndare> {
   final luogo = TextEditingController();
-
+  int indiceBarra = 0;
   @override
   void initState() {
     super.initState();
@@ -26,7 +28,44 @@ class _DoveAndareState extends State<DoveAndare> {
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
-          bottomNavigationBar: bottomBar.MyBottomNavigationBar(context),
+          bottomNavigationBar: BottomNavigationBar(
+        fixedColor: Colors.black,
+        currentIndex: indiceBarra,
+        iconSize: 50,
+        unselectedLabelStyle: TextStyle(
+            color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+        selectedLabelStyle: TextStyle(
+            color: Colors.green, fontWeight: FontWeight.bold, fontSize: 20),
+            onTap: (value) {
+              indiceBarra = value;
+              if (value == 0) Navigator.push(context, MaterialPageRoute(builder: (context) => menu.MenuPrincipale()));
+              if (value == 1) Navigator.push(context, MaterialPageRoute(builder: (context) => preferiti.Preferiti()));
+              if (value == 2) Navigator.push(context, MaterialPageRoute(builder: (context) => account.Account()));
+              setState(() {});
+             
+            },
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            label: "Home",
+            icon: Icon(
+              Icons.home,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: "Preferiti",
+            icon: Icon(
+              Icons.favorite_border_outlined,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: "Account",
+            icon: Icon(
+              Icons.account_circle_outlined,
+            ),
+          ),
+          
+        ],
+      ),
           appBar: AppBar(
             toolbarHeight: 66,
             backgroundColor: Colors.grey[400],
@@ -58,10 +97,7 @@ class _DoveAndareState extends State<DoveAndare> {
                       hintText: 'Digita un luogo...'),
                 ),
 
-                ElevatedButton(
-                    onPressed: () => print(luogo.text),
-                    child: Text("stampa luogo sulla console")),
-
+                Divider(),
                 //DA QUI INIZIANO I LUOGHI DINAMICI
 
                 ListView(
@@ -101,39 +137,6 @@ class _DoveAndareState extends State<DoveAndare> {
                         ],
                       ),
                     ),
-                    Card(
-                      child: Column(
-                        children: [
-                          Stack(
-                            children: [
-                              Image(
-                                image: AssetImage("assets/Ponza00.jpg"),
-                                height: 100,
-                                width: double.infinity,
-                                fit: BoxFit.fitWidth,
-                              ),
-                              IconButton(
-                                iconSize: 35,
-                                color: Colors.red,
-                                icon: Icon(Icons.favorite),
-                                onPressed: () => {},
-                              )
-                            ],
-                          ),
-                          Text("TITOLO", textAlign: TextAlign.right),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.star_border),
-                              Icon(Icons.star_border),
-                              Icon(Icons.star_border),
-                              Icon(Icons.star_border),
-                              Icon(Icons.star_border),
-                            ],
-                          )
-                        ],
-                      ),
-                    )
                   ],
                 ),
               ],
