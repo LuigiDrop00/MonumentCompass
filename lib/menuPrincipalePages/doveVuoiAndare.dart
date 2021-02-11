@@ -1,9 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart' as ico;
 import 'package:MonumentCompass/bottomNavigationPages/account.dart ' as account;
-import 'package:MonumentCompass/bottomNavigationPages/preferiti.dart ' as preferiti;
+import 'package:MonumentCompass/bottomNavigationPages/tabs.dart ' as tabs;
 import 'package:MonumentCompass/menuPrincipale.dart' as menu;
+import 'package:MonumentCompass/src/cartolinaCitta.dart' as citta;
+import 'package:MonumentCompass/localitaCitta/ponza.dart' as p;
 
 class DoveAndare extends StatefulWidget {
   @override
@@ -29,7 +30,7 @@ class _DoveAndareState extends State<DoveAndare> {
       home: SafeArea(
         child: Scaffold(
           bottomNavigationBar: BottomNavigationBar(
-        fixedColor: Colors.black,
+        
         currentIndex: indiceBarra,
         iconSize: 50,
         unselectedLabelStyle: TextStyle(
@@ -39,7 +40,7 @@ class _DoveAndareState extends State<DoveAndare> {
             onTap: (value) {
               indiceBarra = value;
               if (value == 0) Navigator.push(context, MaterialPageRoute(builder: (context) => menu.MenuPrincipale()));
-              if (value == 1) Navigator.push(context, MaterialPageRoute(builder: (context) => preferiti.Preferiti()));
+              if (value == 1) Navigator.push(context, MaterialPageRoute(builder: (context) => tabs.Preferiti()));
               if (value == 2) Navigator.push(context, MaterialPageRoute(builder: (context) => account.Account()));
               setState(() {});
              
@@ -99,52 +100,16 @@ class _DoveAndareState extends State<DoveAndare> {
 
                 Divider(),
                 //DA QUI INIZIANO I LUOGHI DINAMICI
-
-                ListView(
-                  physics: ClampingScrollPhysics(),
-                  shrinkWrap: true,
-                  children: [
-                    Card(
-                      child: Column(
-                        children: [
-                          Stack(
-                            children: [
-                              Image(
-                                image: AssetImage("assets/Ponza00.jpg"),
-                                height: 100,
-                                width: double.infinity,
-                                fit: BoxFit.fitWidth,
-                              ),
-                              IconButton(
-                                iconSize: 35,
-                                color: Colors.red,
-                                icon: Icon(Icons.favorite),
-                                onPressed: () => {},
-                              )
-                            ],
-                          ),
-                          Text("TITOLO", textAlign: TextAlign.right),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.star_border),
-                              Icon(Icons.star_border),
-                              Icon(Icons.star_border),
-                              Icon(Icons.star_border),
-                              Icon(Icons.star_border),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
+                citta.CartolinaCitta(immagine: p.Ponza.immaginePonza, nomeCitta: p.Ponza.nomeCitta, provincia: p.Ponza.provincia,listaEventi: [...p.Ponza.eventi], listaLuoghi: [...p.Ponza.luoghi], ),
+                
                   ],
                 ),
-              ],
+              
             ),
           ),
         ),
-      ),
-    );
+      );
+
   }
 }
 

@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:MonumentCompass/menuPrincipalePages/doveVuoiAndare.dart' as doveAndare;
 import 'package:MonumentCompass/menuPrincipalePages/scopriNelleVicinanze.dart' as  vicinanze;
 import 'package:MonumentCompass/bottomNavigationPages/account.dart ' as account;
-import 'package:MonumentCompass/bottomNavigationPages/preferiti.dart ' as preferiti;
+import 'package:MonumentCompass/bottomNavigationPages/tabs.dart ' as tabs;
 import 'package:MonumentCompass/menuPrincipale.dart' as menu;
 
 
@@ -22,7 +22,7 @@ class _MenuPrincipaleState extends State<MenuPrincipale> {
   @override
   Widget build(BuildContext context) {
     
-    return MaterialApp(
+    return MaterialApp( debugShowCheckedModeBanner: false,
         home: SafeArea(
             child: Scaffold(
              
@@ -119,7 +119,7 @@ class _MenuPrincipaleState extends State<MenuPrincipale> {
             onTap: (value) {
               
               if (value == 0) Navigator.push(context, MaterialPageRoute(builder: (context) => menu.MenuPrincipale()));
-              if (value == 1) Navigator.push(context, MaterialPageRoute(builder: (context) => preferiti.Preferiti()));
+              if (value == 1) Navigator.push(context, MaterialPageRoute(builder: (context) => tabs.Preferiti()));
               if (value == 2) Navigator.push(context, MaterialPageRoute(builder: (context) => account.Account()));
               setState(() {});
              
@@ -128,7 +128,7 @@ class _MenuPrincipaleState extends State<MenuPrincipale> {
           BottomNavigationBarItem(
             label: "Home",
             icon: Icon(
-              Icons.home_outlined,
+              Icons.home,
             ),
           ),
           BottomNavigationBarItem(

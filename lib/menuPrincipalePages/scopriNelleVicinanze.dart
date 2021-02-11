@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:MonumentCompass/bottomNavigationPages/account.dart ' as account;
-import 'package:MonumentCompass/bottomNavigationPages/preferiti.dart ' as preferiti;
+import 'package:MonumentCompass/bottomNavigationPages/tabs.dart ' as tabs;
 import 'package:MonumentCompass/menuPrincipale.dart' as menu;
 
 class ScopriNelleVicinanze extends StatefulWidget {
@@ -35,7 +35,6 @@ class _ScopriNelleVicinanzeState extends State<ScopriNelleVicinanze> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        fixedColor: Colors.black,
         currentIndex: indiceBarra,
         iconSize: 50,
         unselectedLabelStyle: TextStyle(
@@ -45,7 +44,7 @@ class _ScopriNelleVicinanzeState extends State<ScopriNelleVicinanze> {
             onTap: (value) {
               
               if (value == 0) Navigator.push(context, MaterialPageRoute(builder: (context) => menu.MenuPrincipale()));
-              if (value == 1) Navigator.push(context, MaterialPageRoute(builder: (context) => preferiti.Preferiti()));
+              if (value == 1) Navigator.push(context, MaterialPageRoute(builder: (context) => tabs.Preferiti()));
               if (value == 2) Navigator.push(context, MaterialPageRoute(builder: (context) => account.Account()));
               setState(() {
                 indiceBarra = value;

@@ -1,34 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:MonumentCompass/src/cartolinaMonumenti.dart' as card;
 import 'package:MonumentCompass/bottomNavigationPages/account.dart ' as account;
-import 'package:MonumentCompass/bottomNavigationPages/preferiti.dart ' as preferiti;
+import 'package:MonumentCompass/bottomNavigationPages/tabs.dart ' as tabs;
 import 'package:MonumentCompass/menuPrincipale.dart' as menu;
 
 class DettaglioCitta extends StatefulWidget {
-  DettaglioCitta({@required this.immagine, @required this.title, provincia});
+  DettaglioCitta({@required this.immagine, @required this.nomeCitta,@required this.provincia, @required this.listaLuoghi, @required this.listaEventi});
   final ImageProvider immagine;
-  final String title;
+  final String nomeCitta;
+  final List<Widget> listaLuoghi;
+  final List<Widget> listaEventi;
+  final String provincia;
+  
   @override
   _DettaglioCittaState createState() => _DettaglioCittaState();
 }
 
 class _DettaglioCittaState extends State<DettaglioCitta> {
+
   int indiceBarra = 0;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        fixedColor: Colors.black,
         currentIndex: indiceBarra,
         iconSize: 50,
         unselectedLabelStyle: TextStyle(
             color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
         selectedLabelStyle: TextStyle(
-            color: Colors.green, fontWeight: FontWeight.bold, fontSize: 20),
+            color: Colors.lightBlue, fontWeight: FontWeight.bold, fontSize: 20),
             onTap: (value) {
-              indiceBarra = value;
               if (value == 0) Navigator.push(context, MaterialPageRoute(builder: (context) => menu.MenuPrincipale()));
-              if (value == 1) Navigator.push(context, MaterialPageRoute(builder: (context) => preferiti.Preferiti()));
+              if (value == 1) Navigator.push(context, MaterialPageRoute(builder: (context) => tabs.Preferiti()));
               if (value == 2) Navigator.push(context, MaterialPageRoute(builder: (context) => account.Account()));
               setState(() {});
              
@@ -41,7 +45,7 @@ class _DettaglioCittaState extends State<DettaglioCitta> {
             ),
           ),
           BottomNavigationBarItem(
-            label: "Preferiti",
+            label: "Viaggi",
             icon: Icon(
               Icons.favorite_border_outlined,
             ),
@@ -57,15 +61,16 @@ class _DettaglioCittaState extends State<DettaglioCitta> {
       ),
       
       appBar: AppBar(
+        backgroundColor: Color.fromRGBO(192, 204, 218, 1) ,
         automaticallyImplyLeading: true,
-        title: Text("CITTA'"),
+        title: Text("CITTA'", textScaleFactor: 1.5,),
         centerTitle: true,
         
       ),
       body: ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(8.0),
             child: Card(
                 color: Color.fromRGBO(192, 204, 218, 1),
                 child: Column(
@@ -78,7 +83,7 @@ class _DettaglioCittaState extends State<DettaglioCitta> {
                         fit: BoxFit.fill),
                     Container(
                       child: Text(
-                        "PONZA(LT)",
+                        "${widget.nomeCitta} ${ widget.provincia}",
                         textAlign: TextAlign.left,
                         textScaleFactor: 2,
                       ),
@@ -88,10 +93,10 @@ class _DettaglioCittaState extends State<DettaglioCitta> {
                 )),
           ),
           Container(
-            margin: EdgeInsets.only(left: 10, top: 20, bottom: 10),
+            margin: EdgeInsets.only(left: 10, bottom: 10),
             alignment: Alignment.centerLeft,
             child: Text(
-              "Il Meglio di ${widget.title}:",
+              "Il Meglio di ${widget.nomeCitta}:",
               textScaleFactor: 1.8,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
@@ -104,10 +109,12 @@ class _DettaglioCittaState extends State<DettaglioCitta> {
                   Icon(
                     Icons.account_balance_rounded,
                     size: 40,
+                    color: Colors.indigo[900],
                   ),
                   Icon(
                     Icons.theater_comedy,
                     size: 40,
+                    color: Colors.indigo[900],
                   ),
                   Text("Musei e Teatri:", textScaleFactor: 1.65),
                 ],
@@ -119,28 +126,8 @@ class _DettaglioCittaState extends State<DettaglioCitta> {
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(children: [
-                card.CartolinaMonumento(
-                  immagine: AssetImage(""),
-                  title: "PONZA",
-                  numeroStelle: 3,
-                ),
-                card.CartolinaMonumento(
-                  immagine: AssetImage(""),
-                  title: "PONZA",
-                  numeroStelle: 4,
-                ),
-                card.CartolinaMonumento(
-                  immagine: AssetImage(""),
-                  title: "PONZA",
-                ),
-                card.CartolinaMonumento(
-                  immagine: AssetImage(""),
-                  title: "PONZA",
-                ),
-                card.CartolinaMonumento(
-                  immagine: AssetImage(""),
-                  title: "PONZA",
-                )
+                //PASSARE IN INPUT LISTA MUSEI/TEATRIs
+                ...widget.listaLuoghi
               ]),
             ),
           ),
@@ -150,40 +137,22 @@ class _DettaglioCittaState extends State<DettaglioCitta> {
             color: Color.fromRGBO(192, 204, 218, 1),
             child: Row(
               children: [
-                Icon(Icons.date_range_rounded, size: 30,),
+                Icon(Icons.date_range_rounded, size: 30, color: Colors.indigo[900],),
                 Text("Eventi:", textScaleFactor: 1.6,style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(vertical:12),
-            color: Color.fromRGBO(192, 204, 218, 1),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(children: [
-                card.CartolinaMonumento(
-                  immagine: AssetImage(""),
-                  title: "PONZA",
-                ),
-                card.CartolinaMonumento(
-                  immagine: AssetImage(""),
-                  title: "PONZA",
-                ),
-                card.CartolinaMonumento(
-                  immagine: AssetImage(""),
-                  title: "PONZA",
-                ),
-                card.CartolinaMonumento(
-                  immagine: AssetImage(""),
-                  title: "PONZA",
-                ),
-                card.CartolinaMonumento(
-                  immagine: AssetImage(""),
-                  title: "PONZA",
-                )
-              ]),
+              padding: EdgeInsets.symmetric(vertical:12),
+              color: Color.fromRGBO(192, 204, 218, 1),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(children: [
+                    // PASSARE IN INPUT LISTA DEGLI EVENTI
+                    ...widget.listaEventi
+                  ]),
+              ),
             ),
-          ),
         ],
       ),
     );

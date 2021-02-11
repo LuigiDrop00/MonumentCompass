@@ -1,7 +1,5 @@
-import 'package:MonumentCompass/bottomNavigationPages/preferiti.dart';
 import 'package:flutter/material.dart';
-import 'package:MonumentCompass/bottomNavigationPages/account.dart ' as account;
-import 'package:MonumentCompass/bottomNavigationPages/preferiti.dart ' as preferiti;
+import 'package:MonumentCompass/bottomNavigationPages/tabs.dart ' as tabs;
 import 'package:MonumentCompass/menuPrincipale.dart' as menu;
 
 class Account extends StatefulWidget {
@@ -27,7 +25,7 @@ class _AccountState extends State<Account> {
             onTap: (value) {
               indiceBarra = value;
               if (value == 0) Navigator.push(context, MaterialPageRoute(builder: (context) => menu.MenuPrincipale()));
-              if (value == 1) Navigator.push(context, MaterialPageRoute(builder: (context) => preferiti.Preferiti()));
+              if (value == 1) Navigator.push(context, MaterialPageRoute(builder: (context) => tabs.Preferiti()));
               setState(() {});
              
             },
